@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkpoint-Driven Task Handler</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* CSS for styling the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .buttons button:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eaeaea;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap; /* Ensure that new lines are respected */
+            word-wrap: break-word; /* Ensure that words break properly */
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Checkpoint-Driven Task Handler</h1>
+        <p>Manage tasks with checkpointing and crash recovery simulation.</p>
+        <div class="buttons">
+            <button id="startTasks">Start Tasks</button>
+            <button id="simulateCrash">Simulate Crash</button>
+            <button id="recoverTasks">Recover Tasks</button>
+        </div>
+        <div id="output" class="output"></div>
+    </div>
+    <script>
+        const output = document.getElementById('output');
+
+        // Function to append messages with <br> for new lines
+        const appendOutput = (message) => {
+            const textNode = document.createTextNode(message);
+            output.appendChild(textNode);
+            output.appendChild(document.createElement('br')); // Line break
+
+            output.scrollTop = output.scrollHeight; // Auto-scroll to the latest message
+        };
+
+        document.getElementById('startTasks').addEventListener('click', () => {
+            fetch('/start')
+                .then(response => response.text())
+                .then(data => appendOutput(data))
+                .catch(error => appendOutput(`Error: ${error}`));
+        });
+
+        document.getElementById('simulateCrash').addEventListener('click', () => {
+            fetch('/crash')
+                .then(response => response.text())
+                .then(data => appendOutput(data))
+                .catch(error => appendOutput(`Error: ${error}`));
+        });
+
+        document.getElementById('recoverTasks').addEventListener('click', () => {
+            fetch('/recover')
+                .then(response => response.text())
+                .then(data => appendOutput(data))
+                .catch(error => appendOutput(`Error: ${error}`));
+        });
+    </script>
+</body>
+</html>
