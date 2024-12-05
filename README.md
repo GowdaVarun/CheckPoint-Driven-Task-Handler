@@ -12,7 +12,7 @@ This project provides a **task management system** with **checkpointing** and **
   
 ## **Technologies**
 
-- **Backend**: Node.js, Express.js
+- **Backend**: Node.js
 - **Frontend**: HTML, CSS, JavaScript
 - **C Program**: Task execution and checkpoint handling
 
