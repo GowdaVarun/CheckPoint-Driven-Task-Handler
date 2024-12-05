@@ -15,11 +15,6 @@ app.get("/start", (req, res) => {
             console.error(`Error executing start: ${error.message}`);
             return res.status(500).send(`Error: ${error.message}`);
         }
-        if (stderr) {
-            console.error(`Stderr: ${stderr}`);
-            return res.status(500).send(`Stderr: ${stderr}`);
-        }
-        console.log(`Task started: ${stdout}`);
         res.send(stdout || "Task processing started.");
     });
 });
@@ -31,11 +26,6 @@ app.get("/crash", (req, res) => {
             console.error(`Error simulating crash: ${error.message}`);
             return res.status(500).send(`Error: ${error.message}`);
         }
-        if (stderr) {
-            console.error(`Stderr: ${stderr}`);
-            return res.status(500).send(`Stderr: ${stderr}`);
-        }
-        console.log(`Crash simulated: ${stdout}`);
         res.send(stdout || "Crash simulated.");
     });
 });
@@ -47,11 +37,6 @@ app.get("/recover", (req, res) => {
             console.error(`Error recovering from checkpoint: ${error.message}`);
             return res.status(500).send(`Error: ${error.message}`);
         }
-        if (stderr) {
-            console.error(`Stderr: ${stderr}`);
-            return res.status(500).send(`Stderr: ${stderr}`);
-        }
-        console.log(`Recovered from checkpoint: ${stdout}`);
         res.send(stdout || "Task recovered from last checkpoint.");
     });
 });
