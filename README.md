@@ -1,6 +1,4 @@
-Here’s the updated version of the README without the license section:
 
----
 
 # **Checkpoint-Driven Task Handler**
 
@@ -22,7 +20,7 @@ This project provides a **task management system** with **checkpointing** and **
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/checkpoint-driven-task-handler.git
+   git clone https://github.com/GowdaVarun/CheckPoint-Driven-Task-Handler.git
    cd checkpoint-driven-task-handler
    ```
 
@@ -53,6 +51,3 @@ This project provides a **task management system** with **checkpointing** and **
 - **Frontend**: 
   - Allows interaction with the backend through buttons to start, simulate a crash, or recover tasks.
 
----
-
-This version removes the license section, keeping the focus on setup and functionality.
